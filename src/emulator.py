@@ -1,4 +1,5 @@
 """OS shell emulator. Variant 24, Stages 1-3."""
+import argparse
 import os
 import re
 import sys
@@ -62,10 +63,28 @@ class Emulator:
 
 
 def main():
-    """Entry point."""
+    """Entry point with argparse."""
+    parser = argparse.ArgumentParser(
+        description="OS Shell Emulator"
+    )
+    parser.add_argument(
+        '--vfs', type=str,
+        help="Path to VFS JSON file"
+    )
+    parser.add_argument(
+        '--script', type=str,
+        help="Path to startup script"
+    )
+    args = parser.parse_args()
+
+    print(f"[DEBUG] vfs={args.vfs}, script={args.script}")
+
     emulator = Emulator()
-    if len(sys.argv) > 1 and sys.argv[1] == '--script':
-        emulator.run_script(sys.argv[2])
+    if args.vfs:
+        emulator.vfs_name = os.path.basename(args.vfs)
+
+    if args.script:
+        emulator.run_script(args.script)
     else:
         emulator.run_repl()
 
