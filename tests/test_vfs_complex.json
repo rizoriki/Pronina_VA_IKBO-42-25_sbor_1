@@ -1,0 +1,36 @@
+{
+  "name": "root",
+  "is_dir": true,
+  "children": [
+    {
+      "name": "dir1",
+      "is_dir": true,
+      "children": [
+        {
+          "name": "dir2",
+          "is_dir": true,
+          "children": [
+            {
+              "name": "dir3",
+              "is_dir": true,
+              "children": [
+                {
+                  "name": "deep.txt",
+                  "is_dir": false,
+                  "is_binary": false,
+                  "content": "Deep file content"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "image.bin",
+      "is_dir": false,
+      "is_binary": true,
+      "content": "aGVsbG8gd29ybGQ="
+    }
+  ]
+}
